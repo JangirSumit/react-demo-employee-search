@@ -61,3 +61,7 @@ body {
   float: left;
   line-height: 30px;
 }
+
+.hideElement{
+  display: none;
+}

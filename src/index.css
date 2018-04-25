@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.employee-details{
+  position: relative;
+  float: left;
+  width: 250px;
+  max-width: 300px;
+  height: 90px;
+  margin: 10px;
+  max-height: 110px;
+  border: 1px Solid lightslategrey;
+}
+
+.float-left{
+  float: left;
+}
+
+.padding-left{
+  padding-left: 10px;
+}
+
+.filters{
+  height: 30px;
+  width: 100%;
+  padding-top: 20px;
+  float: left;
+  margin-left: 30px;
+}
+
+.search-text{
+  height: 25px;
+  width: 250px;
+  float: left;
+  margin-right: 50px;
+  margin-left: 40px;
+}
+
+.employee-details-container{
+  float: left;
+  position: relative;
+  margin-left: 50px;
+}
+
+.select-max-salary,.select-min-salary{
+  float: left;
+  height: 30px;
+  widows: 250px;
+  margin-left: 30px;
+}
+
+.search-salary{
+  float: left;
+  position: relative;
+}
+
+.div-salary{
+  float: left;
+  line-height: 30px;
+}

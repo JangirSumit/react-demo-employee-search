@@ -10,7 +10,7 @@ class Filter extends React.Component {
                     Salary
                 </div>
                 <select className="select-min-salary" onChange={this.props.searchMinSalary} value={this.props.minSalary}>
-                    <option value="0" selected>0</option>
+                    <option value="0" selected>Minimum</option>
                     <option value="500">500</option>
                     <option value="1000">1000</option>
                     <option value="10000">10000</option>
@@ -25,6 +25,13 @@ class Filter extends React.Component {
                     <option value="1000000">1000000</option>
                     <option value=">1000000" selected>>1000000</option>
                 </select>
+                </div>
+                <div className="div-age-container">
+                    <div className="div-age">Age</div>
+                    <div className="slider-container"><input id="ageSlider" type="range" min="0" max="100" value={this.props.age} step="1" onInput={this.props.ageRangeChange} />
+                    
+                    </div>
+                    <div className="div-age-value">{this.props.age}</div>
                 </div>
             </div>
         );

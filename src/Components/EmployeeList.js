@@ -37,22 +37,29 @@ class EmployeeList extends React.Component {
         let employeesList = self.state.employees
                             .filter(e=>self.props.searchText === "" ? true :
                                 e.employee_name.toLowerCase().includes(self.props.searchText.toLowerCase()) > 0)
-                                .filter(e=>{
-                                    let salary = parseInt(e.employee_salary,10);
-                                    let minSalary = parseInt(self.props.minSalary,10);
-                                    let maxSalary = self.props.maxSalary === ">1000000" ? employeeMaxSalary : parseInt(self.props.maxSalary,10)
+                            .filter(e=>{
+                                let salary = parseInt(e.employee_salary,10);
+                                let minSalary = parseInt(self.props.minSalary,10);
+                                let maxSalary = self.props.maxSalary === ">1000000" ? employeeMaxSalary : parseInt(self.props.maxSalary,10)
 
-                                    if(salary >= minSalary && salary <= maxSalary){
-                                        return true;
-                                    }
+                                if(salary >= minSalary && salary <= maxSalary){
+                                    return true;
+                                }
 
+                                return false;
+                            }).filter(e=>{
+                                let age = e.employee_age === "" ? 0 : parseInt(e.employee_age);
+                                if(self.props.age === 0 || self.props.age === age){
+                                    return true;
+                                }else {
                                     return false;
-                                })
+                                }
+                            })
                             .map((employee)=>{
             return <Employee key={employee.id} employee={employee}/>
             })
         return(
-            <div className="employee-details-container"> <h3>Employee Details</h3>
+            <div className="employee-details-container">
             {employeesList}
             </div>
         );

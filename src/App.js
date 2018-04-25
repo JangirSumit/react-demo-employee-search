@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './images/logo.svg';
 import './App.css';
 import EmployeeList from "./Components/EmployeeList";
 import Filter from './Components/Filter';
@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       searchText : "",
       minSalary : "0",
-      maxSalary : ">1000000"
+      maxSalary : ">1000000",
+      age: 0
     };
   }
 
@@ -38,19 +39,30 @@ class App extends Component {
     });
   }
 
+  ageRangeChange(event){
+    let age = event.target.value;
+
+    this.setState({
+      age: parseInt(age)
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Employee Details</h1>
         </header>
         <Filter searchEmployeeKeyUp = {this.searchEmployeeKeyUp.bind(this)} 
                 searchMinSalary = {this.searchMinSalary.bind(this)} 
-                searchMaxSalary = {this.searchMaxSalary.bind(this)}/>
-        <EmployeeList searchText={this.state.searchText} 
-                      minSalary={this.state.minSalary} 
-                      maxSalary={this.state.maxSalary}/>
+                searchMaxSalary = {this.searchMaxSalary.bind(this)}
+                ageRangeChange = {this.ageRangeChange.bind(this)}
+                age={this.state.age}/>
+        <EmployeeList searchText = {this.state.searchText} 
+                      minSalary = {this.state.minSalary} 
+                      maxSalary = {this.state.maxSalary}
+                      age = {this.state.age}/>
       </div>
     );
   }

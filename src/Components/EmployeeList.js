@@ -38,9 +38,9 @@ class EmployeeList extends React.Component {
                             .filter(e=>self.props.searchText === "" ? true :
                                 e.employee_name.toLowerCase().includes(self.props.searchText.toLowerCase()) > 0)
                             .filter(e=>{
-                                let salary = parseInt(e.employee_salary,10);
+                                let salary = parseInt(e.employee_salary, 10);
                                 let minSalary = parseInt(self.props.minSalary,10);
-                                let maxSalary = self.props.maxSalary === ">1000000" ? employeeMaxSalary : parseInt(self.props.maxSalary,10)
+                                let maxSalary = self.props.maxSalary === ">1000000" ? employeeMaxSalary : parseInt(self.props.maxSalary, 10)
 
                                 if(salary >= minSalary && salary <= maxSalary){
                                     return true;
@@ -48,7 +48,7 @@ class EmployeeList extends React.Component {
 
                                 return false;
                             }).filter(e=>{
-                                let age = e.employee_age === "" ? 0 : parseInt(e.employee_age);
+                                let age = e.employee_age === "" ? 0 : parseInt(e.employee_age, 10);
                                 if(self.props.age === 0 || self.props.age === age){
                                     return true;
                                 }else {

@@ -5,47 +5,6 @@ import ProductModule from "./Components/ProductModule";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchText: "",
-      minSalary: "0",
-      maxSalary: ">1000000",
-      age: 0
-    };
-  }
-
-  searchEmployeeKeyUp(event) {
-    if (event.keyCode === 13) {
-      let text = event.target.value;
-      this.setState({
-        searchText: text
-      });
-    }
-  }
-
-  searchMinSalary(event) {
-    let text = event.target.value;
-    this.setState({
-      minSalary: text
-    });
-  }
-
-  searchMaxSalary(event) {
-    let text = event.target.value;
-    this.setState({
-      maxSalary: text
-    });
-  }
-
-  ageRangeChange(event) {
-    let age = event.target.value;
-
-    this.setState({
-      age: parseInt(age)
-    });
-  }
 
   render() {
     return (

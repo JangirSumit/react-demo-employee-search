@@ -3,11 +3,11 @@ import React from 'react';
 class Filter extends React.Component {
     render() {
         return (
-            <div class="filters row">
-                <div class="col">
+            <div className="filters row">
+                <div className="col">
                     <input type="text" className="search-text" placeholder="Seach Employee by name..." onKeyUp={this.props.searchEmployeeKeyUp} />
                 </div>
-                <div class="col">
+                <div className="col">
                     <div className="search-salary">
                         <div className="div-salary">
                             Salary
@@ -30,7 +30,7 @@ class Filter extends React.Component {
                         </select>
                     </div>
                 </div>
-                <div class="col">
+                <div className="col">
                     <div className="div-age-container">
                         <div className="div-age">Age</div>
                         <div className="slider-container"><input id="ageSlider" type="range" min="0" max="100" value={this.props.age} step="1" onInput={this.props.ageRangeChange} />

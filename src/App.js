@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import EmployeeList from "./Components/EmployeeList";
-import Filter from "./Components/Filter";
+import EmployeeModule from "./Components/EmployeeModule";
+import ProductModule from "./Components/ProductModule";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -48,47 +49,36 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">
-                React Demo
+      <Router>
+        <div>
+          <nav className="navbar navbar-default">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <a className="navbar-brand" href="#">
+                  React Demo
               </a>
+              </div>
+              <div
+                className="collapse navbar-collapse"
+                id="bs-example-navbar-collapse-1"
+              >
+                <ul className="nav navbar-nav">
+                  <li className="active">
+                    <Link to={'/'}>Employee</Link>
+                  </li>
+                  <li>
+                    <Link to={'/Products'}>Products</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div
-              className="collapse navbar-collapse"
-              id="bs-example-navbar-collapse-1"
-            >
-              <ul className="nav navbar-nav">
-                <li className="active">
-                  <a href="#">
-                    Link <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Link</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <div className="App">
-          <Filter
-            searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
-            searchMinSalary={this.searchMinSalary.bind(this)}
-            searchMaxSalary={this.searchMaxSalary.bind(this)}
-            ageRangeChange={this.ageRangeChange.bind(this)}
-            age={this.state.age}
-          />
-          <EmployeeList
-            searchText={this.state.searchText}
-            minSalary={this.state.minSalary}
-            maxSalary={this.state.maxSalary}
-            age={this.state.age}
-          />
+          </nav>
+          <Switch>
+            <Route exact path='/' component={EmployeeModule} />
+            <Route exact path='/Products' component={ProductModule} />
+          </Switch>
         </div>
-      </div>
+      </Router>
     );
   }
 }

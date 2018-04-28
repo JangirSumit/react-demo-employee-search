@@ -28,7 +28,7 @@ class EmployeeList extends React.Component {
 
     render(){
         if(this.state.isLoading){
-            return <div>Loading...</div>
+            return <div className="loader"></div>
         }
 
         let employeeMaxSalary =  Number.MAX_SAFE_INTEGER;

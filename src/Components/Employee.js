@@ -1,7 +1,21 @@
 import React from "react";
 import imageSrc from "../images/default-employee.jpg";
+import ConfirmationModel from "./ConfirmationModel";
 
 class EmployeeComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      deleteRecord: false
+    };
+  }
+
+  onDeleteClick() {
+    this.setState({
+      deleteRecord: true
+    });
+  }
+
   render() {
     let cardStyle = {
       width: "300px",
@@ -21,13 +35,20 @@ class EmployeeComponent extends React.Component {
           <p className="card-text">
             Salary : {this.props.employee.employee_salary}
           </p>
-          <a href="javascript:void(0);" className="btn btn-primary">
+          <button type="button" className="btn btn-primary">
             Update
-          </a>
-          <a href="javascript:void(0);" className="btn btn-danger margin-left-10">
+          </button>
+          <button
+            type="button"
+            onClick={this.onDeleteClick.bind(this)}
+            className="btn btn-danger margin-left-10"
+            data-target="#modelDialog"
+            data-toggle="modal"
+          >
             Delete
-          </a>
+          </button>
         </div>
+        {this.state.deleteRecord ? <ConfirmationModel /> : ""}
       </div>
     );
   }

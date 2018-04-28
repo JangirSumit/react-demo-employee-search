@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
 }
 
-.employee-details{
+.employee-details {
   position: relative;
   float: left;
   width: 200px;
@@ -14,19 +14,19 @@ body {
   border: 1px Solid lightslategrey;
 }
 
-.float-left{
+.float-left {
   float: left;
 }
 
-.padding-left{
+.padding-left {
   padding-left: 10px;
 }
 
-.margin-left-10{
+.margin-left-10 {
   margin-left: 10px;
 }
 
-.filters{
+.filters {
   height: 30px;
   width: 100%;
   padding-top: 20px;
@@ -35,7 +35,7 @@ body {
   margin-left: 30px;
 }
 
-.search-text{
+.search-text {
   height: 25px;
   width: 250px;
   float: left;
@@ -43,12 +43,13 @@ body {
   margin-left: 25px;
 }
 
-.employee-details-container{
+.employee-details-container {
   position: relative;
-  width:100%; 
+  width: 100%;
 }
 
-.select-max-salary,.select-min-salary{
+.select-max-salary,
+.select-min-salary {
   float: left;
   height: 30px;
   widows: 250px;
@@ -60,33 +61,70 @@ body {
   position: relative;
 }
 
-.div-salary,.div-age{
+.div-salary,
+.div-age {
   float: left;
   line-height: 30px;
 }
 
-.div-age-container{
+.div-age-container {
   float: left;
   position: relative;
   padding-left: 30px;
 }
 
-.hideElement{
+.hideElement {
   display: none;
 }
 
-.slider-container{
+.slider-container {
   float: left;
   position: relative;
-  padding-left:30px; 
-  padding-right:30px; 
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.div-age-value{
+.div-age-value {
   float: left;
   border: 1px solid lightblue;
   widows: 30px;
   height: 20px;
-  padding-left: 40px; 
+  padding-left: 40px;
   line-height: 20px;
+}
+
+/* Loader Css */
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

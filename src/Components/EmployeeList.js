@@ -49,7 +49,7 @@ class EmployeeList extends React.Component {
                                 return false;
                             }).filter(e=>{
                                 let age = e.employee_age === "" ? 0 : parseInt(e.employee_age, 10);
-                                if(self.props.age === 0 || self.props.age === age){
+                                if(e.employee_name && (self.props.age === 0 || self.props.age === age)){
                                     return true;
                                 }else {
                                     return false;
@@ -60,7 +60,7 @@ class EmployeeList extends React.Component {
             })
         return(
             <div className="employee-details-container">
-            {employeesList}
+                {employeesList}
             </div>
         );
     }

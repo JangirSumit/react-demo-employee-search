@@ -22,6 +22,10 @@ body {
   padding-left: 10px;
 }
 
+.margin-left-10{
+  margin-left: 10px;
+}
+
 .filters{
   height: 30px;
   width: 100%;
@@ -40,9 +44,8 @@ body {
 }
 
 .employee-details-container{
-  float: left;
   position: relative;
-  margin-left: 50px;
+  width:100%; 
 }
 
 .select-max-salary,.select-min-salary{

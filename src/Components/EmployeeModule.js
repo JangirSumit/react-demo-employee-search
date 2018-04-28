@@ -41,7 +41,7 @@ class EmployeeModule extends React.Component {
         let age = event.target.value;
 
         this.setState({
-            age: parseInt(age)
+            age: parseInt(age, 10)
         });
     }
 

@@ -1,34 +1,43 @@
 import React from "react";
+import { Modal, Button } from "react-bootstrap";
 
 class ConfirmationModel extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleHide = this.handleHide.bind(this);
+    this.handleOk = this.handleOk.bind(this);
+  }
+
+  handleHide() {
+    this.props.handleHide();
+  }
+
+  handleOk() {
+    this.props.handleOk();
+  }
+
   render() {
     return (
-      <div className="modal" tabIndex="-1" role="dialog" id="modelDialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-body">
-              <p>Are you sure!</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-dismiss="modal"
-                onClick={this.props.deleteEmployee}
-              >
-                Delete
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Modal
+        show={this.props.show}
+        onHide={this.handleHide}
+        container={this}
+        aria-labelledby="contained-modal-title"
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title">
+            Confirmation Alert
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure?</Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.handleHide}>Close</Button>
+          <Button bsStyle="primary" onClick={this.handleOk}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
     );
   }
 }

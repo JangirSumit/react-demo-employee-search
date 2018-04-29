@@ -71,34 +71,6 @@
       "profile_image": ""
     },
     {
-      "id": "18",
-      "employee_name": "Gloria Little",
-      "employee_salary": "237500",
-      "employee_age": "59",
-      "profile_image": ""
-    },
-    {
-      "id": "19",
-      "employee_name": "Bradley Greer",
-      "employee_salary": "132000",
-      "employee_age": "41",
-      "profile_image": ""
-    },
-    {
-      "id": "21",
-      "employee_name": "VarunNmae",
-      "employee_salary": "111111110",
-      "employee_age": "28",
-      "profile_image": ""
-    },
-    {
-      "id": "22",
-      "employee_name": "",
-      "employee_salary": "0",
-      "employee_age": "0",
-      "profile_image": ""
-    },
-    {
       "id": "24",
       "employee_name": "",
       "employee_salary": "0",
@@ -113,24 +85,10 @@
       "profile_image": ""
     },
     {
-      "id": "26",
-      "employee_name": "Gavin Joyce",
-      "employee_salary": "92575",
-      "employee_age": "42",
-      "profile_image": ""
-    },
-    {
       "id": "28",
       "employee_name": "",
       "employee_salary": "0",
       "employee_age": "0",
-      "profile_image": ""
-    },
-    {
-      "id": "29",
-      "employee_name": "Fiona Green",
-      "employee_salary": "850000",
-      "employee_age": "66",
       "profile_image": ""
     },
     {
@@ -194,20 +152,6 @@
       "employee_name": "",
       "employee_salary": "0",
       "employee_age": "0",
-      "profile_image": ""
-    },
-    {
-      "id": "160",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "161",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
       "profile_image": ""
     },
     {
@@ -421,13 +365,6 @@
       "profile_image": ""
     },
     {
-      "id": "192",
-      "employee_name": "lmnop",
-      "employee_salary": "12354567",
-      "employee_age": "56",
-      "profile_image": ""
-    },
-    {
       "id": "193",
       "employee_name": "aaaaa",
       "employee_salary": "12354567",
@@ -435,24 +372,10 @@
       "profile_image": ""
     },
     {
-      "id": "194",
-      "employee_name": "john",
-      "employee_salary": "4545677",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
       "id": "195",
       "employee_name": "J2EE",
       "employee_salary": "12354567",
       "employee_age": "24",
-      "profile_image": ""
-    },
-    {
-      "id": "196",
-      "employee_name": "mary",
-      "employee_salary": "12354567",
-      "employee_age": "78",
       "profile_image": ""
     },
     {
@@ -2981,6 +2904,19 @@
       "employee_salary": "217500",
       "employee_age": "35",
       "profile_image": ""
+    },
+    {
+      "id": "_KI8Op1"
+    },
+    {
+      "id": "fGTJ1Dw"
+    },
+    {
+      "employee_name": "Sumit Jangir",
+      "employee_salary": "1234560",
+      "employee_age": "25",
+      "profile_image": "",
+      "id": "El99861"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Employee from "./Employee";
+import ConfirmationDialog from "./ConfirmationModel";
 
 class EmployeeList extends React.Component {
   constructor(props) {
@@ -7,12 +8,37 @@ class EmployeeList extends React.Component {
 
     this.state = {
       employees: {},
-      isLoading: true
+      isLoading: true,
+      showModal: false
     };
+    this.employee = {};
+  }
+
+  handleHide() {
+    this.setState({ showModal: false });
+  }
+
+  handleOk() {
+    let self = this;
+    let employees = this.state.employees;
+    fetch("http://localhost:3000/Employees/" + self.employee.id, {
+      method: "DELETE"
+    }).then(response => {
+      if (response.ok) {
+        const index = self.state.employees.indexOf(self.employee);
+        employees.splice(index, 1);
+        self.setState({
+          employees: employees,
+          showModal: false
+        });
+      }
+    });
   }
 
   loadEmployees() {
-    fetch("http://localhost:3000/Employees")
+    fetch("http://localhost:3000/Employees", {
+      method: "GET"
+    })
       .then(response => {
         return response.json();
       })
@@ -25,19 +51,8 @@ class EmployeeList extends React.Component {
   }
 
   deleteEmployee(employee) {
-    let self = this;
-    let employees = this.state.employees;
-    fetch("http://localhost:3000/Employees/" + employee.id, {
-      method: "DELETE"
-    }).then(response => {
-      if (response.ok) {
-        const index = employees.indexOf(employee);
-        employees.splice(index, 1);
-        self.setState({
-          employees: employees
-        });
-      }
-    });
+    this.employee = employee;
+    this.setState({ showModal: true });
   }
 
   componentDidMount() {
@@ -95,7 +110,16 @@ class EmployeeList extends React.Component {
           />
         );
       });
-    return <div className="employee-details-container">{employeesList}</div>;
+    return (
+      <div className="employee-details-container">
+        {employeesList}
+        <ConfirmationDialog
+          handleHide={this.handleHide.bind(this)}
+          handleOk={this.handleOk.bind(this)}
+          show={this.state.showModal}
+        />
+      </div>
+    );
   }
 }
 

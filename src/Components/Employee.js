@@ -1,19 +1,9 @@
 import React from "react";
 import imageSrc from "../images/default-employee.jpg";
-import ConfirmationModel from "./ConfirmationModel";
 
 class EmployeeComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      deleteRecord: false
-    };
-  }
-
-  onDeleteClick() {
-    this.setState({
-      deleteRecord: true
-    });
+  deleteEmployee() {
+    this.props.deleteEmployee(this.props.employee);
   }
 
   render() {
@@ -40,7 +30,7 @@ class EmployeeComponent extends React.Component {
           </button>
           <button
             type="button"
-            onClick={this.onDeleteClick.bind(this)}
+            onClick={this.deleteEmployee.bind(this)}
             className="btn btn-danger margin-left-10"
             data-target="#modelDialog"
             data-toggle="modal"
@@ -48,7 +38,6 @@ class EmployeeComponent extends React.Component {
             Delete
           </button>
         </div>
-        {this.state.deleteRecord ? <ConfirmationModel /> : ""}
       </div>
     );
   }

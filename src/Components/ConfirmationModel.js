@@ -10,7 +10,12 @@ class ConfirmationModel extends React.Component {
               <p>Are you sure!</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-dismiss="modal"
+                onClick={this.props.deleteEmployee}
+              >
                 Delete
               </button>
               <button

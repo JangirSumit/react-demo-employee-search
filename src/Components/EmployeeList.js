@@ -68,14 +68,17 @@ class EmployeeList extends React.Component {
     let self = this;
 
     let employeesList = self.state.employees
-      .filter(
-        e =>
+      .filter(e => {
+        console.log(e);
+        let result =
           self.props.searchText === ""
             ? true
             : e.employee_name
                 .toLowerCase()
-                .includes(self.props.searchText.toLowerCase()) > 0
-      )
+                .includes(self.props.searchText.toLowerCase()) > 0;
+
+        return result;
+      })
       .filter(e => {
         let salary = parseInt(e.employee_salary, 10);
         let minSalary = parseInt(self.props.minSalary, 10);

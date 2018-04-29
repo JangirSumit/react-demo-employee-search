@@ -274,13 +274,6 @@
       "profile_image": ""
     },
     {
-      "id": "179",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
       "id": "180",
       "employee_name": "aaaaa",
       "employee_salary": "1234355678",
@@ -677,20 +670,6 @@
       "employee_name": "asadsas",
       "employee_salary": "45000",
       "employee_age": "55",
-      "profile_image": ""
-    },
-    {
-      "id": "240",
-      "employee_name": "sd",
-      "employee_salary": "50000",
-      "employee_age": "50",
-      "profile_image": ""
-    },
-    {
-      "id": "241",
-      "employee_name": "Jagdish",
-      "employee_salary": "45000",
-      "employee_age": "50",
       "profile_image": ""
     },
     {
@@ -2904,12 +2883,6 @@
       "employee_salary": "217500",
       "employee_age": "35",
       "profile_image": ""
-    },
-    {
-      "id": "_KI8Op1"
-    },
-    {
-      "id": "fGTJ1Dw"
     },
     {
       "employee_name": "Sumit Jangir",

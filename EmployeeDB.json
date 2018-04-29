@@ -162,34 +162,6 @@
       "profile_image": ""
     },
     {
-      "id": "163",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "164",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "165",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "166",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
       "id": "167",
       "employee_name": "aaaaa",
       "employee_salary": "1234355678",
@@ -327,20 +299,6 @@
       "employee_name": "aaaaa",
       "employee_salary": "1234355678",
       "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "188",
-      "employee_name": "aaaaa",
-      "employee_salary": "1234355678",
-      "employee_age": "44",
-      "profile_image": ""
-    },
-    {
-      "id": "189",
-      "employee_name": "aaaaa",
-      "employee_salary": "12354567",
-      "employee_age": "24",
       "profile_image": ""
     },
     {

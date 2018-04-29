@@ -1,6 +1,7 @@
 import React from "react";
 import Employee from "./Employee";
-import ConfirmationDialog from "./ConfirmationModel";
+import ConfirmationDialog from "./ConfirmationModal";
+import EmployeeModal from "./EmployeeModal";
 
 class EmployeeList extends React.Component {
   constructor(props) {
@@ -121,6 +122,7 @@ class EmployeeList extends React.Component {
           handleOk={this.handleOk.bind(this)}
           show={this.state.showModal}
         />
+        <EmployeeModal />
       </div>
     );
   }

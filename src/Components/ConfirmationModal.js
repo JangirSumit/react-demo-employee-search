@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-class ConfirmationModel extends React.Component {
+class ConfirmationModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,4 +42,4 @@ class ConfirmationModel extends React.Component {
   }
 }
 
-export default ConfirmationModel;
+export default ConfirmationModal;

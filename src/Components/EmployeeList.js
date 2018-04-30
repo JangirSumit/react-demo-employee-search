@@ -66,6 +66,19 @@ class EmployeeList extends React.Component {
     this.setState({ showUpdateModal: false });
   }
 
+  saveUpdateEmployeeModal(newEmployee) {
+    fetch("http://localhost:4000/Employees/" + newEmployee.id, {
+      method: "PUT",
+      headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(newEmployee)
+    })
+      .then(response => {
+        if (response.ok) {
+          this.setState({ showUpdateModal: false });
+        }
+      });
+  }
+
   componentDidMount() {
     this.loadEmployees();
   }
@@ -134,6 +147,7 @@ class EmployeeList extends React.Component {
         />
         <EmployeeModal show={this.state.showUpdateModal}
           handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)}
+          saveUpdateEmployeeModal={this.saveUpdateEmployeeModal.bind(this)}
           employee={this.employee} />
       </div>
     );

@@ -30,8 +30,15 @@ class EmployeeModal extends React.Component {
     };
   }
 
-  handleSave(){
-
+  handleSave() {
+    let newEmployee = {
+      id: this.props.employee.id,
+      employee_name: document.getElementById("txtName").value,
+      employee_salary: document.getElementById("txtSalary").value,
+      employee_age: document.getElementById("txtAge").value,
+      profile_image: ""
+    };
+    this.props.saveUpdateEmployeeModal(newEmployee);
   }
 
   handleClose() {
@@ -58,25 +65,25 @@ class EmployeeModal extends React.Component {
               id="txtName"
               type="text"
               label="Name"
-              value={this.props.employee.employee_name}
+              defaultValue={this.props.employee.employee_name}
               placeholder="Enter Name"
             />
             <FieldGroup
               id="txtSalary"
               type="text"
               label="Salary"
-              value={this.props.employee.employee_salary}
+              defaultValue={this.props.employee.employee_salary}
               placeholder="Enter Salary"
             />
             <FieldGroup
-              id="txtSalary"
+              id="txtAge"
               type="text"
               label="Age"
-              value={this.props.employee.employee_age}
+              defaultValue={this.props.employee.employee_age}
               placeholder="Enter Age"
             />
             <FieldGroup
-              id="formControlsFile"
+              id="filePath"
               type="file"
               label="File"
               help="Attach Employee Image."

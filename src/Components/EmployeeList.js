@@ -67,16 +67,24 @@ class EmployeeList extends React.Component {
   }
 
   saveUpdateEmployeeModal(newEmployee) {
+    let self = this;
+    let index = this.state.employees.indexOf(this.employee);
+    let emps = this.state.employees;
+
     fetch("http://localhost:4000/Employees/" + newEmployee.id, {
       method: "PUT",
-      headers: new Headers({ 'content-type': 'application/json' }),
+      headers: new Headers({ "content-type": "application/json" }),
       body: JSON.stringify(newEmployee)
-    })
-      .then(response => {
-        if (response.ok) {
-          this.setState({ showUpdateModal: false });
-        }
-      });
+    }).then(response => {
+      if (response.ok) {
+        self.employee = {};
+        emps[index] = newEmployee;
+        self.setState({
+          showUpdateModal: false,
+          employees: emps
+        });
+      }
+    });
   }
 
   componentDidMount() {
@@ -97,8 +105,8 @@ class EmployeeList extends React.Component {
           self.props.searchText === ""
             ? true
             : e.employee_name
-              .toLowerCase()
-              .includes(self.props.searchText.toLowerCase()) > 0;
+                .toLowerCase()
+                .includes(self.props.searchText.toLowerCase()) > 0;
 
         return result;
       })
@@ -145,10 +153,12 @@ class EmployeeList extends React.Component {
           handleOk={this.handleOk.bind(this)}
           show={this.state.showDeleteModal}
         />
-        <EmployeeModal show={this.state.showUpdateModal}
+        <EmployeeModal
+          show={this.state.showUpdateModal}
           handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)}
           saveUpdateEmployeeModal={this.saveUpdateEmployeeModal.bind(this)}
-          employee={this.employee} />
+          employee={this.employee}
+        />
       </div>
     );
   }

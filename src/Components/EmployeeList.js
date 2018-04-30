@@ -135,6 +135,19 @@ class EmployeeList extends React.Component {
           return false;
         }
       })
+      .sort((a, b) => {
+        if (self.props.sortBy === "Name") {
+          return a.employee_name - b.employee_name;
+        } else if (self.props.sortBy === "Age") {
+          let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
+          let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
+          return sa - sb;
+        } else if (self.props.sortBy === "Age") {
+          //   let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
+          //   let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
+          return a.employee_salary - b.employee_salary;
+        }
+      })
       .map(employee => {
         return (
           <Employee

@@ -2,6 +2,11 @@ import React from "react";
 import imageSrc from "../images/sort.png";
 
 class Filter extends React.Component {
+  sortBy(event) {
+    let value = event.target.value;
+    this.props.sortBy(value);
+  }
+
   render() {
     return (
       <div className="filters row">
@@ -15,7 +20,9 @@ class Filter extends React.Component {
         </div>
         <div className="col">
           <div className="search-salary">
-            <div className="div-salary">Salary</div>
+            <div className="div-salary">
+              <strong>Salary</strong>
+            </div>
             <select
               className="select-min-salary"
               onChange={this.props.searchMinSalary}
@@ -48,7 +55,9 @@ class Filter extends React.Component {
         </div>
         <div className="col">
           <div className="div-age-container">
-            <div className="div-age">Age</div>
+            <div className="div-age">
+              <strong>Age</strong>
+            </div>
             <div className="slider-container">
               <input
                 id="ageSlider"
@@ -64,17 +73,24 @@ class Filter extends React.Component {
           </div>
         </div>
         <div className="sort-by-wrapper">
-          <div className="sort-by-text">Sort By</div>
+          <div className="sort-by-text">
+            <strong>Sort By</strong>
+          </div>
           <select
             className="select-sort-by"
-            // onChange={this.props.searchMaxSalary}
-            // value={this.props.maxSalary}
+            onChange={this.sortBy.bind(this)}
+            value={this.props.sortBy}
           >
             <option value="Name">Name</option>
             <option value="Salary">Salary</option>
             <option value="Age">Age</option>
           </select>
-          <img src={imageSrc} alt="sort" className="sort-image"/>
+          <img
+            src={imageSrc}
+            alt="sort"
+            className="sort-image"
+            onClick={this.props.AscDescClick}
+          />
         </div>
       </div>
     );

@@ -22,7 +22,7 @@ class EmployeeList extends React.Component {
   handleOk() {
     let self = this;
     let employees = this.state.employees;
-    fetch("http://localhost:3000/Employees/" + self.employee.id, {
+    fetch("http://localhost:4000/Employees/" + self.employee.id, {
       method: "DELETE"
     }).then(response => {
       if (response.ok) {
@@ -37,7 +37,7 @@ class EmployeeList extends React.Component {
   }
 
   loadEmployees() {
-    fetch("http://localhost:3000/Employees", {
+    fetch("http://localhost:4000/Employees", {
       method: "GET"
     })
       .then(response => {

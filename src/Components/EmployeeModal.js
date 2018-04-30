@@ -19,16 +19,35 @@ function FieldGroup({ id, label, help, ...props }) {
 }
 
 class EmployeeModal extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+
+    this.state = {
+      show: false
+    };
+  }
+
+  handleSave(){
+
+  }
+
+  handleClose() {
+    this.props.handleUpdateEmployeeModal();
+  }
+
   render() {
     return (
       <Modal
-        show="true"
-        // onHide={this.handleHide}
+        show={this.props.show}
+        onHide={this.handleClose}
         container={this}
         bsSize="large"
         aria-labelledby="contained-modal-title-lg"
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-lg">
             Fill Employee Details
           </Modal.Title>
@@ -57,16 +76,15 @@ class EmployeeModal extends React.Component {
               id="formControlsFile"
               type="file"
               label="File"
-              help="Example block-level help text here."
+              help="Attach Employee Image."
             />
           </form>
         </Modal.Body>
-
         <Modal.Footer>
-          <Button bsStyle="primary" onClick={this.props.onSave}>
+          <Button bsStyle="primary" onClick={this.handleSave}>
             Save
           </Button>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={this.handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
     );

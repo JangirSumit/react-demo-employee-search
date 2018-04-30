@@ -6,6 +6,10 @@ class EmployeeComponent extends React.Component {
     this.props.deleteEmployee(this.props.employee);
   }
 
+  updateEmployee(){
+    this.props.updateEmployee(this.props.employee);
+  }
+
   render() {
     let cardStyle = {
       width: "300px",
@@ -25,7 +29,7 @@ class EmployeeComponent extends React.Component {
           <p className="card-text">
             Salary : {this.props.employee.employee_salary}
           </p>
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={this.updateEmployee.bind(this)}>
             Update
           </button>
           <button

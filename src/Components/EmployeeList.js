@@ -10,13 +10,14 @@ class EmployeeList extends React.Component {
     this.state = {
       employees: {},
       isLoading: true,
-      showModal: false
+      showDeleteModal: false,
+      showUpdateModal: false
     };
     this.employee = {};
   }
 
   handleHide() {
-    this.setState({ showModal: false });
+    this.setState({ showDeleteModal: false });
   }
 
   handleOk() {
@@ -30,7 +31,7 @@ class EmployeeList extends React.Component {
         employees.splice(index, 1);
         self.setState({
           employees: employees,
-          showModal: false
+          showDeleteModal: false
         });
       }
     });
@@ -53,7 +54,16 @@ class EmployeeList extends React.Component {
 
   deleteEmployee(employee) {
     this.employee = employee;
-    this.setState({ showModal: true });
+    this.setState({ showDeleteModal: true });
+  }
+
+  updateEmployee(employee) {
+    this.employee = employee;
+    this.setState({ showUpdateModal: true });
+  }
+
+  handleUpdateEmployeeModal() {
+    this.setState({ showUpdateModal: false });
   }
 
   componentDidMount() {
@@ -70,13 +80,12 @@ class EmployeeList extends React.Component {
 
     let employeesList = self.state.employees
       .filter(e => {
-        console.log(e);
         let result =
           self.props.searchText === ""
             ? true
             : e.employee_name
-                .toLowerCase()
-                .includes(self.props.searchText.toLowerCase()) > 0;
+              .toLowerCase()
+              .includes(self.props.searchText.toLowerCase()) > 0;
 
         return result;
       })
@@ -111,6 +120,7 @@ class EmployeeList extends React.Component {
             key={employee.id}
             employee={employee}
             deleteEmployee={this.deleteEmployee.bind(this)}
+            updateEmployee={this.updateEmployee.bind(this)}
           />
         );
       });
@@ -120,9 +130,10 @@ class EmployeeList extends React.Component {
         <ConfirmationDialog
           handleHide={this.handleHide.bind(this)}
           handleOk={this.handleOk.bind(this)}
-          show={this.state.showModal}
+          show={this.state.showDeleteModal}
         />
-        <EmployeeModal />
+        <EmployeeModal show={this.state.showUpdateModal}
+          handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)} />
       </div>
     );
   }

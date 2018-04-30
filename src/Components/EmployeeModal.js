@@ -58,18 +58,21 @@ class EmployeeModal extends React.Component {
               id="txtName"
               type="text"
               label="Name"
+              value={this.props.employee.employee_name}
               placeholder="Enter Name"
             />
             <FieldGroup
               id="txtSalary"
               type="text"
               label="Salary"
+              value={this.props.employee.employee_salary}
               placeholder="Enter Salary"
             />
             <FieldGroup
               id="txtSalary"
               type="text"
               label="Age"
+              value={this.props.employee.employee_age}
               placeholder="Enter Age"
             />
             <FieldGroup

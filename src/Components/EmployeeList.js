@@ -133,7 +133,8 @@ class EmployeeList extends React.Component {
           show={this.state.showDeleteModal}
         />
         <EmployeeModal show={this.state.showUpdateModal}
-          handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)} />
+          handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)}
+          employee={this.employee} />
       </div>
     );
   }

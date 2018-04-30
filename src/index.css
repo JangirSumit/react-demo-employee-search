@@ -39,7 +39,6 @@ body {
   height: 25px;
   width: 250px;
   float: left;
-  margin-right: 50px;
   margin-left: 25px;
 }
 
@@ -49,20 +48,23 @@ body {
 }
 
 .select-max-salary,
-.select-min-salary {
+.select-min-salary,
+.select-sort-by {
   float: left;
   height: 30px;
-  widows: 250px;
-  margin-left: 30px;
+  width: 100px;
+  margin-left: 20px;
 }
 
 .search-salary {
   float: left;
   position: relative;
+  margin-left: 30px;
 }
 
 .div-salary,
-.div-age {
+.div-age,
+.sort-by-text {
   float: left;
   line-height: 30px;
 }
@@ -84,13 +86,31 @@ body {
   padding-right: 30px;
 }
 
+#ageSlider {
+  height: 30px;
+}
+
 .div-age-value {
   float: left;
   border: 1px solid lightblue;
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.sort-by-wrapper {
+  position: relative;
+  float: left;
+  padding-left: 30px;
+  height: 30px;
+}
+
+.sort-image {
+  float: left;
+  height: 30px;
   widows: 30px;
-  height: 20px;
-  padding-left: 40px;
-  line-height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 /* Loader Css */

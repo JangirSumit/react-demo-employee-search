@@ -2,9 +2,9 @@ import React from "react";
 import imageSrc from "../images/sort.png";
 
 class Filter extends React.Component {
-  sortBy(event) {
+  sortByChange(event) {
     let value = event.target.value;
-    this.props.sortBy(value);
+    this.props.sortByChange(value);
   }
 
   render() {
@@ -78,7 +78,7 @@ class Filter extends React.Component {
           </div>
           <select
             className="select-sort-by"
-            onChange={this.sortBy.bind(this)}
+            onChange={this.sortByChange.bind(this)}
             value={this.props.sortBy}
           >
             <option value="Name">Name</option>

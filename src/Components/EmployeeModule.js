@@ -16,7 +16,7 @@ class EmployeeModule extends React.Component {
     };
   }
 
-  SortBy(sortBy) {
+  sortByChange(sortBy) {
     this.setState({
       sortBy: sortBy,
       asc: false
@@ -70,14 +70,19 @@ class EmployeeModule extends React.Component {
           searchMaxSalary={this.searchMaxSalary.bind(this)}
           ageRangeChange={this.ageRangeChange.bind(this)}
           age={this.state.age}
-          asc={this.state.asc}
           sortBy={this.state.sortBy}
+          sortByChange={this.sortByChange.bind(this)}
+          AscDescClick={this.AscDescClick.bind(this)}
         />
         <EmployeeList
           searchText={this.state.searchText}
           minSalary={this.state.minSalary}
           maxSalary={this.state.maxSalary}
           age={this.state.age}
+          asc={this.state.asc}
+          sortBy={this.state.sortBy}
+          sortByChange={this.sortByChange.bind(this)}
+          AscDescClick={this.AscDescClick.bind(this)}
         />
       </div>
     );

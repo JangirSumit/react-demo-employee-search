@@ -91,6 +91,52 @@ class EmployeeList extends React.Component {
     this.loadEmployees();
   }
 
+  sortEmployees(a, b) {
+    let self = this;
+
+    if (self.props.asc) {
+      if (self.props.sortBy === "Name") {
+        let nameA = a.employee_name.toLowerCase(),
+          nameB = b.employee_name.toLowerCase();
+        if (nameA < nameB)
+          //sort string ascending
+          return -1;
+        if (nameA > nameB) return 1;
+        return 0; //default return value (no sorting)
+      } else if (self.props.sortBy === "Age") {
+        let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
+        let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
+        return sa - sb;
+      } else if (self.props.sortBy === "Salary") {
+        let sa =
+          a.employee_salary === "" ? 0 : parseFloat(a.employee_salary, 10);
+        let sb =
+          b.employee_salary === "" ? 0 : parseFloat(b.employee_salary, 10);
+        return sa - sb;
+      }
+    } else {
+      if (self.props.sortBy === "Name") {
+        let nameA = a.employee_name.toLowerCase(),
+          nameB = b.employee_name.toLowerCase();
+        if (nameA < nameB)
+          //sort string descending
+          return 1;
+        if (nameA > nameB) return -1;
+        return 0; //default return value (no sorting)
+      } else if (self.props.sortBy === "Age") {
+        let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
+        let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
+        return sb - sa;
+      } else if (self.props.sortBy === "Salary") {
+        let sa =
+          a.employee_salary === "" ? 0 : parseFloat(a.employee_salary, 10);
+        let sb =
+          b.employee_salary === "" ? 0 : parseFloat(b.employee_salary, 10);
+        return sb - sa;
+      }
+    }
+  }
+
   render() {
     if (this.state.isLoading) {
       return <div className="loader" />;
@@ -131,23 +177,10 @@ class EmployeeList extends React.Component {
           (self.props.age === 0 || self.props.age === age)
         ) {
           return true;
-        } else {
-          return false;
         }
+        return false;
       })
-      .sort((a, b) => {
-        if (self.props.sortBy === "Name") {
-          return a.employee_name - b.employee_name;
-        } else if (self.props.sortBy === "Age") {
-          let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
-          let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
-          return sa - sb;
-        } else if (self.props.sortBy === "Age") {
-          //   let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
-          //   let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
-          return a.employee_salary - b.employee_salary;
-        }
-      })
+      .sort((a, b) => self.sortEmployees(a, b))
       .map(employee => {
         return (
           <Employee

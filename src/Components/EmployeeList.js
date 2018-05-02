@@ -197,7 +197,7 @@ class EmployeeList extends React.Component {
   render() {
     if (this.state.isLoading) {
       return <div className="loader" />;
-    } else if (!employeesList) {
+    } else if (!this.state.employees.length) {
       return <div className="error-loading-data">Error in Loading data...</div>
     }
 

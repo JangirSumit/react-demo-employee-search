@@ -92,7 +92,7 @@ class Filter extends React.Component {
             onClick={this.props.AscDescClick}
           />
         </div>
-        <button type="button" className="btn btn-primary">Create Employee</button>
+        <button type="button" className="btn btn-primary create-button" onClick={this.props.onCreateClick}>Create Employee</button>
       </div>
     );
   }

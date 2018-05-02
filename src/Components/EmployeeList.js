@@ -91,18 +91,60 @@ class EmployeeList extends React.Component {
     this.loadEmployees();
   }
 
-  sortEmployees(a, b) {
+  filterByName(e) {
     let self = this;
 
+    let result =
+      self.props.searchText === ""
+        ? true
+        : e.employee_name
+          .toLowerCase()
+          .includes(self.props.searchText.toLowerCase()) > 0;
+
+    return result;
+  }
+
+  filterByAge(e) {
+    let self = this;
+    let age = e.employee_age === "" ? 0 : parseInt(e.employee_age, 10);
+    if (
+      e.employee_name &&
+      (self.props.age === 0 || self.props.age === age)
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  filterBySalary(e) {
+    let self = this;
+    let employeeMaxSalary = Number.MAX_SAFE_INTEGER;
+
+    let salary = parseInt(e.employee_salary, 10);
+    let minSalary = parseInt(self.props.minSalary, 10);
+    let maxSalary =
+      self.props.maxSalary === ">1000000"
+        ? employeeMaxSalary
+        : parseInt(self.props.maxSalary, 10);
+
+    if (salary >= minSalary && salary <= maxSalary) {
+      return true;
+    }
+
+    return false;
+  }
+
+  sortEmployees(a, b) {
+    let self = this;
+    //ASC
     if (self.props.asc) {
       if (self.props.sortBy === "Name") {
         let nameA = a.employee_name.toLowerCase(),
           nameB = b.employee_name.toLowerCase();
         if (nameA < nameB)
-          //sort string ascending
           return -1;
         if (nameA > nameB) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       } else if (self.props.sortBy === "Age") {
         let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
         let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
@@ -114,15 +156,15 @@ class EmployeeList extends React.Component {
           b.employee_salary === "" ? 0 : parseFloat(b.employee_salary, 10);
         return sa - sb;
       }
+      //DESC
     } else {
       if (self.props.sortBy === "Name") {
         let nameA = a.employee_name.toLowerCase(),
           nameB = b.employee_name.toLowerCase();
         if (nameA < nameB)
-          //sort string descending
           return 1;
         if (nameA > nameB) return -1;
-        return 0; //default return value (no sorting)
+        return 0;
       } else if (self.props.sortBy === "Age") {
         let sa = a.employee_age === "" ? 0 : parseInt(a.employee_age, 10);
         let sb = b.employee_age === "" ? 0 : parseInt(b.employee_age, 10);
@@ -137,60 +179,31 @@ class EmployeeList extends React.Component {
     }
   }
 
+  renderEmployee(employee) {
+    return (
+      <Employee
+        key={employee.id}
+        employee={employee}
+        deleteEmployee={this.deleteEmployee.bind(this)}
+        updateEmployee={this.updateEmployee.bind(this)}
+      />
+    );
+  }
+
   render() {
     if (this.state.isLoading) {
       return <div className="loader" />;
     }
 
-    let employeeMaxSalary = Number.MAX_SAFE_INTEGER;
     let self = this;
 
     let employeesList = self.state.employees
-      .filter(e => {
-        let result =
-          self.props.searchText === ""
-            ? true
-            : e.employee_name
-                .toLowerCase()
-                .includes(self.props.searchText.toLowerCase()) > 0;
-
-        return result;
-      })
-      .filter(e => {
-        let salary = parseInt(e.employee_salary, 10);
-        let minSalary = parseInt(self.props.minSalary, 10);
-        let maxSalary =
-          self.props.maxSalary === ">1000000"
-            ? employeeMaxSalary
-            : parseInt(self.props.maxSalary, 10);
-
-        if (salary >= minSalary && salary <= maxSalary) {
-          return true;
-        }
-
-        return false;
-      })
-      .filter(e => {
-        let age = e.employee_age === "" ? 0 : parseInt(e.employee_age, 10);
-        if (
-          e.employee_name &&
-          (self.props.age === 0 || self.props.age === age)
-        ) {
-          return true;
-        }
-        return false;
-      })
+      .filter(e => self.filterByName(e))
+      .filter(e => self.filterBySalary(e))
+      .filter(e => self.filterByAge(e))
       .sort((a, b) => self.sortEmployees(a, b))
-      .map(employee => {
-        return (
-          <Employee
-            key={employee.id}
-            employee={employee}
-            deleteEmployee={this.deleteEmployee.bind(this)}
-            updateEmployee={this.updateEmployee.bind(this)}
-          />
-        );
-      });
+      .map(employee => self.renderEmployee(employee));
+
     return (
       <div className="employee-details-container">
         {employeesList}

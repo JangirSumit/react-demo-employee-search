@@ -113,6 +113,14 @@ body {
   cursor: pointer;
 }
 
+.error-loading-data{
+  vertical-align: middle;
+  padding-top: 200px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 /* Loader Css */
 
 .loader {

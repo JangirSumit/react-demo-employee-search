@@ -49,6 +49,10 @@ class EmployeeList extends React.Component {
           employees: employees,
           isLoading: false
         });
+      }).catch((error) => {
+        this.setState({
+          isLoading: false
+        });
       });
   }
 
@@ -193,6 +197,8 @@ class EmployeeList extends React.Component {
   render() {
     if (this.state.isLoading) {
       return <div className="loader" />;
+    } else if (!employeesList) {
+      return <div className="error-loading-data">Error in Loading data...</div>
     }
 
     let self = this;

@@ -71,10 +71,17 @@ class EmployeeList extends React.Component {
   }
 
   saveUpdateEmployeeModal(newEmployee) {
+    if (newEmployee.id) {
+      this.updateEmployeeRecord(newEmployee);
+    } else {
+      this.createEmployeeRecord(newEmployee);
+    }
+  }
+
+  updateEmployeeRecord(newEmployee) {
     let self = this;
     let index = this.state.employees.indexOf(this.employee);
     let emps = this.state.employees;
-
     fetch("http://localhost:4000/Employees/" + newEmployee.id, {
       method: "PUT",
       headers: new Headers({ "content-type": "application/json" }),
@@ -87,6 +94,26 @@ class EmployeeList extends React.Component {
           showUpdateModal: false,
           employees: emps
         });
+      }
+    });
+  }
+
+  createEmployeeRecord(newEmployee) {
+    let self = this;
+    let emp = { ...newEmployee };
+    delete emp.id;
+
+    fetch("http://localhost:4000/Employees", {
+      method: "POST",
+      headers: new Headers({ "content-type": "application/json" }),
+      body: JSON.stringify(emp)
+    }).then(response => {
+      if (response.ok) {
+        this.loadEmployees();
+        self.setState({
+          showUpdateModal: false,
+        });
+        self.props.handleShowEmployeeModal(false);
       }
     });
   }
@@ -201,6 +228,8 @@ class EmployeeList extends React.Component {
       return <div className="error-loading-data">Error in Loading data...</div>
     }
 
+    let showEmployeeModal = this.props.showCreateEmployee || this.state.showUpdateModal;
+
     let self = this;
 
     let employeesList = self.state.employees
@@ -219,7 +248,7 @@ class EmployeeList extends React.Component {
           show={this.state.showDeleteModal}
         />
         <EmployeeModal
-          show={this.state.showUpdateModal}
+          show={showEmployeeModal}
           handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)}
           saveUpdateEmployeeModal={this.saveUpdateEmployeeModal.bind(this)}
           employee={this.employee}

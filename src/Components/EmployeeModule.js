@@ -12,7 +12,8 @@ class EmployeeModule extends React.Component {
       maxSalary: ">1000000",
       age: 0,
       sortBy: "Name",
-      asc: false
+      asc: false,
+      showCreateEmployee: false
     };
   }
 
@@ -61,6 +62,12 @@ class EmployeeModule extends React.Component {
     });
   }
 
+  handleShowEmployeeModal(show) {
+    this.setState({
+      showCreateEmployee: show
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,6 +80,7 @@ class EmployeeModule extends React.Component {
           sortBy={this.state.sortBy}
           sortByChange={this.sortByChange.bind(this)}
           AscDescClick={this.AscDescClick.bind(this)}
+          onCreateClick={this.handleShowEmployeeModal.bind(this)}
         />
         <EmployeeList
           searchText={this.state.searchText}
@@ -82,7 +90,8 @@ class EmployeeModule extends React.Component {
           asc={this.state.asc}
           sortBy={this.state.sortBy}
           sortByChange={this.sortByChange.bind(this)}
-          AscDescClick={this.AscDescClick.bind(this)}
+          showCreateEmployee={this.state.showCreateEmployee}
+          handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
         />
       </div>
     );

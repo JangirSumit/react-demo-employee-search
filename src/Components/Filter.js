@@ -7,6 +7,10 @@ class Filter extends React.Component {
     this.props.sortByChange(value);
   }
 
+  onCreateClick(){
+    this.props.onCreateClick(true);
+  }
+
   render() {
     return (
       <div className="filters row">
@@ -92,7 +96,7 @@ class Filter extends React.Component {
             onClick={this.props.AscDescClick}
           />
         </div>
-        <button type="button" className="btn btn-primary create-button" onClick={this.props.onCreateClick}>Create Employee</button>
+        <button type="button" className="btn btn-primary create-button" onClick={this.onCreateClick.bind(this)}>Create Employee</button>
       </div>
     );
   }

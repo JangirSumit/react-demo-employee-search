@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar inverse>
+          <Navbar inverse >
             <Navbar.Header>
               <Navbar.Brand>
                 <a href="javascript:void(0);">React-Bootstrap</a>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Jumbotron } from 'react-bootstrap';
 import EmployeeList from "./EmployeeList";
 import Filter from "./Filter";
 
@@ -70,7 +71,10 @@ class EmployeeModule extends React.Component {
 
   render() {
     return (
-      <div className="App container">
+      <div>
+        <Jumbotron>
+          <h3><strong>Employee Details</strong></h3>
+        </Jumbotron>
         <Filter
           searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
           searchMinSalary={this.searchMinSalary.bind(this)}

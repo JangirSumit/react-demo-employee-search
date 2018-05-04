@@ -25,13 +25,13 @@ class App extends Component {
             <Navbar.Collapse>
               <Nav>
                 <li>
-                  <Link to={"/"}>Employee</Link>
+                  <Link to={"/"}><strong>Employee</strong></Link>
                 </li>
                 <li>
-                  <Link to={"/help"}>Help</Link>
+                  <Link to={"/help"}><strong>Help</strong></Link>
                 </li>
                 <li>
-                  <Link to={"/about"}>About</Link>
+                  <Link to={"/about"}><strong>About</strong></Link>
                 </li>
               </Nav>
             </Navbar.Collapse>

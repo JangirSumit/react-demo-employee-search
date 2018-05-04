@@ -12,14 +12,14 @@ class AboutModule extends React.Component {
         <p>
           This is a demo application which is completely made in react.js which includes following features.
 </p>
-        <p>Bootstrap (react-bootstrap)</p>
-        <p>Searching</p>
-        <p>Sorting</p>
-        <p>Add</p>
-        <p>Update</p>
-        <p>Delete</p>
-        <p>Confirmation dialogs (Bootstrap)</p>
-        <p>Modal dialogs (Bootstrap)</p>
+        <p>1. Bootstrap (react-bootstrap)</p>
+        <p>2. Searching</p>
+        <p>3. Sorting</p>
+        <p>4. Add</p>
+        <p>5. Update</p>
+        <p>6. Delete</p>
+        <p>7. Confirmation dialogs (Bootstrap)</p>
+        <p>8. Modal dialogs (Bootstrap)</p>
       </div>
     );
   }

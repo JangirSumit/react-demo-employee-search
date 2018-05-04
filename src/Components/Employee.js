@@ -1,21 +1,22 @@
 import React from "react";
 import imageSrc from "../images/default-employee.jpg";
+import { Button } from 'react-bootstrap';
 
 class EmployeeComponent extends React.Component {
   deleteEmployee() {
     this.props.deleteEmployee(this.props.employee);
   }
 
-  updateEmployee(){
+  updateEmployee() {
     this.props.updateEmployee(this.props.employee);
   }
 
   render() {
     let cardStyle = {
-      width: "300px",
+      width: "240px",
       float: "left",
-      paddingLeft: "30px",
-      paddingTop: "40px"
+      marginTop: "40px",
+      marginLeft: "30px"
     };
 
     return (
@@ -29,18 +30,9 @@ class EmployeeComponent extends React.Component {
           <p className="card-text">
             Salary : {this.props.employee.employee_salary}
           </p>
-          <button type="button" className="btn btn-primary" onClick={this.updateEmployee.bind(this)}>
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={this.deleteEmployee.bind(this)}
-            className="btn btn-danger margin-left-10"
-            data-target="#modelDialog"
-            data-toggle="modal"
-          >
-            Delete
-          </button>
+          <Button bsSize="xsmall" bsStyle="primary" onClick={this.updateEmployee.bind(this)}>Update</Button>
+          <Button bsStyle="danger" bsSize="xsmall" className="margin-left-10" data-target="#modelDialog" onClick={this.deleteEmployee.bind(this)}
+            data-toggle="modal">Delete</Button>
         </div>
       </div>
     );

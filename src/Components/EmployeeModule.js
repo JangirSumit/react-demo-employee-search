@@ -70,7 +70,7 @@ class EmployeeModule extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <Filter
           searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
           searchMinSalary={this.searchMinSalary.bind(this)}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid, Row, Col } from 'react-bootstrap';
 import imageSrc from "../images/sort.png";
 
 class Filter extends React.Component {
@@ -7,26 +8,26 @@ class Filter extends React.Component {
     this.props.sortByChange(value);
   }
 
-  onCreateClick(){
+  onCreateClick() {
     this.props.onCreateClick(true);
   }
 
   render() {
     return (
-      <div className="filters row">
-        <div className="col">
-          <input
-            type="text"
-            className="search-text"
-            placeholder="Seach Employee by name..."
-            onKeyUp={this.props.searchEmployeeKeyUp}
-          />
-        </div>
-        <div className="col">
-          <div className="search-salary">
-            <div className="div-salary">
-              <strong>Salary</strong>
-            </div>
+      <Grid>
+        <Row className="show-grid row-height">
+          <Col xs={12} md={3}>
+            <input
+              type="text"
+              className="search-text"
+              placeholder="Seach Employee by name..."
+              onKeyUp={this.props.searchEmployeeKeyUp}
+            />
+          </Col>
+          <Col xs={12} md={1}>
+            <strong>Salary</strong>
+          </Col>
+          <Col xs={12} md={4}>
             <select
               className="select-min-salary"
               onChange={this.props.searchMinSalary}
@@ -41,46 +42,39 @@ class Filter extends React.Component {
               <option value="100000">100000</option>
               <option value="1000000">1000000</option>
             </select>
-            <select
-              className="select-max-salary"
-              onChange={this.props.searchMaxSalary}
-              value={this.props.maxSalary}
-            >
-              <option value="0">0</option>
-              <option value="500">500</option>
-              <option value="1000">1000</option>
-              <option value="100000">100000</option>
-              <option value="1000000">1000000</option>
-              <option value=">1000000" selected>
-                >1000000
+
+          </Col>
+          <Col xs={12} md={4}><select
+            className="select-max-salary"
+            onChange={this.props.searchMaxSalary}
+            value={this.props.maxSalary}
+          >
+            <option value="0">0</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="100000">100000</option>
+            <option value="1000000">1000000</option>
+            <option value=">1000000" selected>
+              >1000000
               </option>
-            </select>
-          </div>
-        </div>
-        <div className="col">
-          <div className="div-age-container">
-            <div className="div-age">
-              <strong>Age</strong>
-            </div>
-            <div className="slider-container">
-              <input
-                id="ageSlider"
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.age}
-                step="1"
-                onInput={this.props.ageRangeChange}
-              />
-            </div>
-            <div className="div-age-value">{this.props.age}</div>
-          </div>
-        </div>
-        <div className="sort-by-wrapper">
-          <div className="sort-by-text">
-            <strong>Sort By</strong>
-          </div>
-          <select
+          </select>
+          </Col>
+        </Row>
+        <Row className="show-grid row-height">
+          <Col xs={12} md={1}><strong>Age</strong></Col>
+          <Col xs={12} md={2}><div className="slider-container">
+            <input
+              id="ageSlider"
+              type="range"
+              min="0"
+              max="100"
+              value={this.props.age}
+              step="1"
+              onInput={this.props.ageRangeChange}
+            />
+          </div></Col>
+          <Col xs={12} md={1}><div className="div-age-value">{this.props.age}</div></Col>
+          <Col xs={12} md={2}><strong>Sort By</strong></Col><Col xs={12} md={2}><select
             className="select-sort-by"
             onChange={this.sortByChange.bind(this)}
             value={this.props.sortBy}
@@ -88,16 +82,16 @@ class Filter extends React.Component {
             <option value="Name">Name</option>
             <option value="Salary">Salary</option>
             <option value="Age">Age</option>
-          </select>
-          <img
+          </select></Col>
+          <Col xs={12} md={1}><img
             src={imageSrc}
             alt="sort"
             className="sort-image"
             onClick={this.props.AscDescClick}
           />
-        </div>
-        <button type="button" className="btn btn-primary create-button" onClick={this.onCreateClick.bind(this)}>Create Employee</button>
-      </div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

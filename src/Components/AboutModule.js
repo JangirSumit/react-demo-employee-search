@@ -4,11 +4,14 @@ import { Jumbotron, Button } from "react-bootstrap";
 class AboutModule extends React.Component {
   render() {
     return (
-      <Jumbotron>
-        <h3><strong>About</strong></h3>
+      <div>
+        <Jumbotron>
+          <h3><strong>About</strong></h3>
+
+        </Jumbotron >
         <p>
           This is a demo application which is completely made in react.js which includes following features.
-  </p>
+</p>
         <p>Bootstrap (react-bootstrap)</p>
         <p>Searching</p>
         <p>Sorting</p>
@@ -17,7 +20,7 @@ class AboutModule extends React.Component {
         <p>Delete</p>
         <p>Confirmation dialogs (Bootstrap)</p>
         <p>Modal dialogs (Bootstrap)</p>
-      </Jumbotron >
+      </div>
     );
   }
 }

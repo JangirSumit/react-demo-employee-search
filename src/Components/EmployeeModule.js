@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Panel } from 'react-bootstrap';
 import EmployeeList from "./EmployeeList";
 import Filter from "./Filter";
 
@@ -75,17 +75,22 @@ class EmployeeModule extends React.Component {
         <Jumbotron>
           <h3><strong>Employee Details</strong></h3>
         </Jumbotron>
-        <Filter
-          searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
-          searchMinSalary={this.searchMinSalary.bind(this)}
-          searchMaxSalary={this.searchMaxSalary.bind(this)}
-          ageRangeChange={this.ageRangeChange.bind(this)}
-          age={this.state.age}
-          sortBy={this.state.sortBy}
-          sortByChange={this.sortByChange.bind(this)}
-          AscDescClick={this.AscDescClick.bind(this)}
-          onCreateClick={this.handleShowEmployeeModal.bind(this)}
-        />
+        <Panel bsStyle="primary">
+          <Panel.Heading>
+            <Panel.Title componentClass="h3">Filters</Panel.Title>
+          </Panel.Heading>
+          <Panel.Body><Filter
+            searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
+            searchMinSalary={this.searchMinSalary.bind(this)}
+            searchMaxSalary={this.searchMaxSalary.bind(this)}
+            ageRangeChange={this.ageRangeChange.bind(this)}
+            age={this.state.age}
+            sortBy={this.state.sortBy}
+            sortByChange={this.sortByChange.bind(this)}
+            AscDescClick={this.AscDescClick.bind(this)}
+            onCreateClick={this.handleShowEmployeeModal.bind(this)}
+          /></Panel.Body>
+        </Panel>
         <EmployeeList
           searchText={this.state.searchText}
           minSalary={this.state.minSalary}

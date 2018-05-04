@@ -2,6 +2,7 @@ import React from "react";
 import Employee from "./Employee";
 import ConfirmationDialog from "./ConfirmationModal";
 import EmployeeModal from "./EmployeeModal";
+import { Grid, Row } from 'react-bootstrap';
 
 class EmployeeList extends React.Component {
   constructor(props) {
@@ -240,8 +241,12 @@ class EmployeeList extends React.Component {
       .map(employee => self.renderEmployee(employee));
 
     return (
-      <div className="employee-details-container">
-        {employeesList}
+      <div>
+        <Grid>
+          <Row>
+            {employeesList}
+          </Row>
+        </Grid>
         <ConfirmationDialog
           handleHide={this.handleHide.bind(this)}
           handleOk={this.handleOk.bind(this)}

@@ -1,6 +1,6 @@
 import React from "react";
 import imageSrc from "../images/default-employee.jpg";
-import { Button } from 'react-bootstrap';
+import { Button, Thumbnail, Col } from 'react-bootstrap';
 
 class EmployeeComponent extends React.Component {
   deleteEmployee() {
@@ -20,21 +20,20 @@ class EmployeeComponent extends React.Component {
     };
 
     return (
-      <div className="card" style={cardStyle}>
-        <div className="card-header">
+      <Col xs={6} md={3}>
+        <Thumbnail src={imageSrc} alt="242x200">
           <strong>{this.props.employee.employee_name}</strong>
-        </div>
-        <img className="card-img-top" src={imageSrc} alt="" />
-        <div className="card-body">
-          <h5 className="card-title">({this.props.employee.employee_age})</h5>
-          <p className="card-text">
+          <h5>({this.props.employee.employee_age})</h5>
+          <p>
             Salary : {this.props.employee.employee_salary}
           </p>
-          <Button bsSize="xsmall" bsStyle="primary" onClick={this.updateEmployee.bind(this)}>Update</Button>
-          <Button bsStyle="danger" bsSize="xsmall" className="margin-left-10" data-target="#modelDialog" onClick={this.deleteEmployee.bind(this)}
-            data-toggle="modal">Delete</Button>
-        </div>
-      </div>
+          <p>
+            <Button bsSize="small" bsStyle="primary" onClick={this.updateEmployee.bind(this)}>Update</Button>&nbsp;
+            <Button bsStyle="danger" bsSize="small" data-target="#modelDialog" onClick={this.deleteEmployee.bind(this)}
+              data-toggle="modal">Delete</Button>
+          </p>
+        </Thumbnail>
+      </Col>
     );
   }
 }

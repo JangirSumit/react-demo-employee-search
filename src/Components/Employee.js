@@ -1,6 +1,6 @@
 import React from "react";
 import imageSrc from "../images/default-employee.jpg";
-import { Button, Thumbnail, Col } from 'react-bootstrap';
+import { Button, Thumbnail } from 'react-bootstrap';
 
 class EmployeeComponent extends React.Component {
   deleteEmployee() {
@@ -13,7 +13,7 @@ class EmployeeComponent extends React.Component {
 
   render() {
     return (
-      <Col xs={6} md={3} className="center-align-text">
+      <div className="employee-card">
         <Thumbnail src={imageSrc} alt="242x200">
           <strong>{this.props.employee.employee_name}</strong>
           <h5>({this.props.employee.employee_age})</h5>
@@ -26,7 +26,7 @@ class EmployeeComponent extends React.Component {
               data-toggle="modal">Delete</Button>
           </p>
         </Thumbnail>
-      </Col>
+      </div>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Employee from "./Employee";
 import ConfirmationDialog from "./ConfirmationModal";
 import EmployeeModal from "./EmployeeModal";
-import { Grid, Row } from 'react-bootstrap';
+// import { Grid, Row } from 'react-bootstrap';
 
 class EmployeeList extends React.Component {
   constructor(props) {
@@ -242,11 +242,7 @@ class EmployeeList extends React.Component {
 
     return (
       <div>
-        <Grid>
-          <Row>
-            {employeesList}
-          </Row>
-        </Grid>
+        <div className="employee-container">{employeesList}</div>
         <ConfirmationDialog
           handleHide={this.handleHide.bind(this)}
           handleOk={this.handleOk.bind(this)}
@@ -258,7 +254,7 @@ class EmployeeList extends React.Component {
           saveUpdateEmployeeModal={this.saveUpdateEmployeeModal.bind(this)}
           employee={this.employee}
         />
-      </div>
+      </div >
     );
   }
 }

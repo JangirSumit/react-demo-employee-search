@@ -91,17 +91,18 @@ class EmployeeModule extends React.Component {
             onCreateClick={this.handleShowEmployeeModal.bind(this)}
           /></Panel.Body>
         </Panel>
-        <EmployeeList
-          searchText={this.state.searchText}
-          minSalary={this.state.minSalary}
-          maxSalary={this.state.maxSalary}
-          age={this.state.age}
-          asc={this.state.asc}
-          sortBy={this.state.sortBy}
-          sortByChange={this.sortByChange.bind(this)}
-          showCreateEmployee={this.state.showCreateEmployee}
-          handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
-        />
+        <Panel bsStyle="primary"><Panel.Body>
+          <EmployeeList
+            searchText={this.state.searchText}
+            minSalary={this.state.minSalary}
+            maxSalary={this.state.maxSalary}
+            age={this.state.age}
+            asc={this.state.asc}
+            sortBy={this.state.sortBy}
+            sortByChange={this.sortByChange.bind(this)}
+            showCreateEmployee={this.state.showCreateEmployee}
+            handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
+          /></Panel.Body></Panel>
       </div>
     );
   }

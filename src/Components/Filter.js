@@ -74,7 +74,7 @@ class Filter extends React.Component {
             />
           </div></Col>
           <Col xs={12} md={1}><div className="div-age-value">{this.props.age}</div></Col>
-          <Col xs={12} md={2}><strong>Sort By</strong></Col><Col xs={12} md={2}><select
+          <Col xs={12} md={1}><strong>Sort By</strong></Col><Col xs={12} md={3}><select
             className="select-sort-by"
             onChange={this.sortByChange.bind(this)}
             value={this.props.sortBy}
@@ -90,6 +90,8 @@ class Filter extends React.Component {
             onClick={this.props.AscDescClick}
           />
           </Col>
+          <Col xs={12} md={3}></Col>
+          <Col xs={12} md={2}><button type="button" className="btn btn-primary create-button" onClick={this.onCreateClick.bind(this)}>Create Employee</button></Col>
         </Row>
       </Grid>
     );

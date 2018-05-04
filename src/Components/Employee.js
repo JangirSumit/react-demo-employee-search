@@ -12,15 +12,8 @@ class EmployeeComponent extends React.Component {
   }
 
   render() {
-    let cardStyle = {
-      width: "240px",
-      float: "left",
-      marginTop: "40px",
-      marginLeft: "30px"
-    };
-
     return (
-      <Col xs={6} md={3}>
+      <Col xs={6} md={3} className="center-align-text">
         <Thumbnail src={imageSrc} alt="242x200">
           <strong>{this.props.employee.employee_name}</strong>
           <h5>({this.props.employee.employee_age})</h5>

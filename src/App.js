@@ -18,7 +18,7 @@ class App extends Component {
           <Navbar inverse >
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="javascript:void(0);">React Demo</a>
+                <strong>React Demo</strong>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>

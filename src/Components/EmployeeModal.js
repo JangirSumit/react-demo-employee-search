@@ -43,6 +43,7 @@ class EmployeeModal extends React.Component {
 
   handleClose() {
     this.props.handleUpdateEmployeeModal();
+    this.props.handleCreateEmployeeModal();
   }
 
   render() {

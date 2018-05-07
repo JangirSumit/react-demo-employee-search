@@ -69,6 +69,11 @@ class EmployeeModule extends React.Component {
     });
   }
 
+  
+  handleCreateEmployeeModal(){
+    this.setState({ showCreateEmployee: false });
+  }
+
   render() {
     return (
       <div>
@@ -101,6 +106,7 @@ class EmployeeModule extends React.Component {
             sortBy={this.state.sortBy}
             sortByChange={this.sortByChange.bind(this)}
             showCreateEmployee={this.state.showCreateEmployee}
+            handleCreateEmployeeModal={this.handleCreateEmployeeModal.bind(this)}
             handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
           /></Panel.Body></Panel>
       </div>

@@ -71,6 +71,10 @@ class EmployeeList extends React.Component {
     this.setState({ showUpdateModal: false });
   }
 
+  handleCreateEmployeeModal(){
+    this.props.handleCreateEmployeeModal();
+  }
+
   saveUpdateEmployeeModal(newEmployee) {
     if (newEmployee.id) {
       this.updateEmployeeRecord(newEmployee);
@@ -252,6 +256,7 @@ class EmployeeList extends React.Component {
           show={showEmployeeModal}
           handleUpdateEmployeeModal={this.handleUpdateEmployeeModal.bind(this)}
           saveUpdateEmployeeModal={this.saveUpdateEmployeeModal.bind(this)}
+          handleCreateEmployeeModal={this.handleCreateEmployeeModal.bind(this)}
           employee={this.employee}
         />
       </div >

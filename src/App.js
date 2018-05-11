@@ -7,10 +7,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 
 class App extends Component {
-  handleSelect(selectedKey) {
-    console.log(`selected ${selectedKey}`);
-  }
-
   render() {
     return (
       <Router>

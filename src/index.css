@@ -8,7 +8,8 @@ body {
   width:250px;
   height: 360px;
   float: left;
-  margin-right: 20px;
+  margin-right: 15px;
+  margin-left: 12px;
 }
 
 .employee-container{

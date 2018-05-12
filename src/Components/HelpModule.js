@@ -1,13 +1,14 @@
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Panel } from "react-bootstrap";
 
 class HelpModule extends React.Component {
     render() {
         return (
             <div>
-                <Jumbotron>
+                <Jumbotron className="header">
                     <h3><strong>Help</strong></h3>
                 </Jumbotron>
+                <Panel bsStyle="primary"><Panel.Body>
                 <h4>
                     How to use this Application -
 </h4>
@@ -24,6 +25,7 @@ class HelpModule extends React.Component {
                 <p>1. Open command prommt and change directory to where you cloned this repository.</p>
                 <p>2. execute this command : npm start</p>
                 <p></p>
+                </Panel.Body></Panel>
             </div>
         );
     }

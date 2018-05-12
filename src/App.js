@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar inverse >
+          <Navbar inverse className="nav-bar-custom">
             <Navbar.Header>
               <Navbar.Brand>
                 <strong>React Demo</strong>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Panel } from 'react-bootstrap';
+import { Jumbotron, Panel } from "react-bootstrap";
 import EmployeeList from "./EmployeeList";
 import Filter from "./Filter";
 
@@ -14,8 +14,15 @@ class EmployeeModule extends React.Component {
       age: 0,
       sortBy: "Name",
       asc: false,
-      showCreateEmployee: false
+      showCreateEmployee: false,
+      count: 0
     };
+  }
+
+  changeCount(count) {
+    this.setState({
+      count: count
+    });
   }
 
   sortByChange(sortBy) {
@@ -69,46 +76,56 @@ class EmployeeModule extends React.Component {
     });
   }
 
-  
-  handleCreateEmployeeModal(){
+  handleCreateEmployeeModal() {
     this.setState({ showCreateEmployee: false });
   }
 
   render() {
     return (
       <div>
-        <Jumbotron>
-          <h3><strong>Employee Details</strong></h3>
+        <Jumbotron className="header">
+          <h3>
+            <strong>Employee Details</strong>
+          </h3>
         </Jumbotron>
-        <Panel bsStyle="primary">
+        <Panel bsStyle="primary" className="filter-panel">
           <Panel.Heading>
             <Panel.Title componentClass="h3">Filters</Panel.Title>
           </Panel.Heading>
-          <Panel.Body><Filter
-            searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
-            searchMinSalary={this.searchMinSalary.bind(this)}
-            searchMaxSalary={this.searchMaxSalary.bind(this)}
-            ageRangeChange={this.ageRangeChange.bind(this)}
-            age={this.state.age}
-            sortBy={this.state.sortBy}
-            sortByChange={this.sortByChange.bind(this)}
-            AscDescClick={this.AscDescClick.bind(this)}
-            onCreateClick={this.handleShowEmployeeModal.bind(this)}
-          /></Panel.Body>
+          <Panel.Body>
+            <Filter
+              searchEmployeeKeyUp={this.searchEmployeeKeyUp.bind(this)}
+              searchMinSalary={this.searchMinSalary.bind(this)}
+              searchMaxSalary={this.searchMaxSalary.bind(this)}
+              ageRangeChange={this.ageRangeChange.bind(this)}
+              age={this.state.age}
+              sortBy={this.state.sortBy}
+              sortByChange={this.sortByChange.bind(this)}
+              AscDescClick={this.AscDescClick.bind(this)}
+              onCreateClick={this.handleShowEmployeeModal.bind(this)}
+              count={this.state.count}
+            />
+          </Panel.Body>
         </Panel>
-        <Panel bsStyle="primary"><Panel.Body>
-          <EmployeeList
-            searchText={this.state.searchText}
-            minSalary={this.state.minSalary}
-            maxSalary={this.state.maxSalary}
-            age={this.state.age}
-            asc={this.state.asc}
-            sortBy={this.state.sortBy}
-            sortByChange={this.sortByChange.bind(this)}
-            showCreateEmployee={this.state.showCreateEmployee}
-            handleCreateEmployeeModal={this.handleCreateEmployeeModal.bind(this)}
-            handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
-          /></Panel.Body></Panel>
+        <Panel bsStyle="primary">
+          <Panel.Body>
+            <EmployeeList
+              searchText={this.state.searchText}
+              minSalary={this.state.minSalary}
+              maxSalary={this.state.maxSalary}
+              age={this.state.age}
+              asc={this.state.asc}
+              sortBy={this.state.sortBy}
+              sortByChange={this.sortByChange.bind(this)}
+              showCreateEmployee={this.state.showCreateEmployee}
+              handleCreateEmployeeModal={this.handleCreateEmployeeModal.bind(
+                this
+              )}
+              handleShowEmployeeModal={this.handleShowEmployeeModal.bind(this)}
+              changeCount={this.changeCount.bind(this)}
+            />
+          </Panel.Body>
+        </Panel>
       </div>
     );
   }

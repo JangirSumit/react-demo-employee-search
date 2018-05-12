@@ -4,15 +4,19 @@ body {
   font-family: sans-serif;
 }
 
-.employee-card{
-  width:250px;
+.nav-bar-custom{
+  margin-bottom: 5px;
+}
+
+.employee-card {
+  width: 250px;
   height: 360px;
   float: left;
   margin-right: 15px;
   margin-left: 12px;
 }
 
-.employee-container{
+.employee-container {
   text-align: center;
 }
 
@@ -35,7 +39,7 @@ body {
   float: left;
 }
 
-.row-height{
+.row-height {
   height: 45px;
   line-height: 30px;
 }
@@ -54,11 +58,11 @@ body {
   margin-left: 30px;
 }
 
-
 .slider-container {
   float: left;
   position: relative;
-  width: 100%;
+  width: 80%;
+  margin-left: 5px;
 }
 
 #ageSlider {
@@ -72,7 +76,7 @@ body {
   height: 30px;
   line-height: 30px;
   text-align: right;
-  padding-right:5px;
+  padding-right: 5px;
 }
 
 .sort-image {
@@ -83,7 +87,7 @@ body {
   cursor: pointer;
 }
 
-.error-loading-data{
+.error-loading-data {
   vertical-align: middle;
   padding-top: 200px;
   text-align: center;
@@ -91,9 +95,25 @@ body {
   font-weight: bold;
 }
 
-.create-button{
+.create-button {
   position: relative;
   float: right;
+  margin-right: 40px;
+}
+
+.age-label {
+  position: relative;
+  float: left;
+}
+
+.header {
+  padding-bottom: 10px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.filter-panel{
+  margin-bottom: 5px;
 }
 
 /* Loader Css */

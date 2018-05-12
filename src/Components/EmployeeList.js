@@ -50,7 +50,8 @@ class EmployeeList extends React.Component {
           employees: employees,
           isLoading: false
         });
-      }).catch((error) => {
+      })
+      .catch(error => {
         this.setState({
           isLoading: false
         });
@@ -71,7 +72,7 @@ class EmployeeList extends React.Component {
     this.setState({ showUpdateModal: false });
   }
 
-  handleCreateEmployeeModal(){
+  handleCreateEmployeeModal() {
     this.props.handleCreateEmployeeModal();
   }
 
@@ -116,7 +117,7 @@ class EmployeeList extends React.Component {
       if (response.ok) {
         this.loadEmployees();
         self.setState({
-          showUpdateModal: false,
+          showUpdateModal: false
         });
         self.props.handleShowEmployeeModal(false);
       }
@@ -134,8 +135,8 @@ class EmployeeList extends React.Component {
       self.props.searchText === ""
         ? true
         : e.employee_name
-          .toLowerCase()
-          .includes(self.props.searchText.toLowerCase()) > 0;
+            .toLowerCase()
+            .includes(self.props.searchText.toLowerCase()) > 0;
 
     return result;
   }
@@ -143,10 +144,7 @@ class EmployeeList extends React.Component {
   filterByAge(e) {
     let self = this;
     let age = e.employee_age === "" ? 0 : parseInt(e.employee_age, 10);
-    if (
-      e.employee_name &&
-      (self.props.age === 0 || self.props.age === age)
-    ) {
+    if (e.employee_name && (self.props.age === 0 || self.props.age === age)) {
       return true;
     }
     return false;
@@ -177,19 +175,28 @@ class EmployeeList extends React.Component {
       if (self.props.sortBy === "Name") {
         let nameA = a.employee_name.trim().toLowerCase(),
           nameB = b.employee_name.trim().toLowerCase();
-        if (nameA < nameB)
-          return -1;
+        if (nameA < nameB) return -1;
         if (nameA > nameB) return 1;
         return 0;
       } else if (self.props.sortBy === "Age") {
-        let sa = a.employee_age.trim() === "" ? 0 : parseInt(a.employee_age.trim(), 10);
-        let sb = b.employee_age.trim() === "" ? 0 : parseInt(b.employee_age.trim(), 10);
+        let sa =
+          a.employee_age.trim() === ""
+            ? 0
+            : parseInt(a.employee_age.trim(), 10);
+        let sb =
+          b.employee_age.trim() === ""
+            ? 0
+            : parseInt(b.employee_age.trim(), 10);
         return sa - sb;
       } else if (self.props.sortBy === "Salary") {
         let sa =
-          a.employee_salary.trim() === "" ? 0 : parseFloat(a.employee_salary.trim(), 10);
+          a.employee_salary.trim() === ""
+            ? 0
+            : parseFloat(a.employee_salary.trim(), 10);
         let sb =
-          b.employee_salary.trim() === "" ? 0 : parseFloat(b.employee_salary.trim(), 10);
+          b.employee_salary.trim() === ""
+            ? 0
+            : parseFloat(b.employee_salary.trim(), 10);
         return sa - sb;
       }
       //DESC
@@ -197,19 +204,28 @@ class EmployeeList extends React.Component {
       if (self.props.sortBy === "Name") {
         let nameA = a.employee_name.trim().toLowerCase(),
           nameB = b.employee_name.trim().toLowerCase();
-        if (nameA < nameB)
-          return 1;
+        if (nameA < nameB) return 1;
         if (nameA > nameB) return -1;
         return 0;
       } else if (self.props.sortBy === "Age") {
-        let sa = a.employee_age.trim() === "" ? 0 : parseInt(a.employee_age.trim(), 10);
-        let sb = b.employee_age.trim() === "" ? 0 : parseInt(b.employee_age.trim(), 10);
+        let sa =
+          a.employee_age.trim() === ""
+            ? 0
+            : parseInt(a.employee_age.trim(), 10);
+        let sb =
+          b.employee_age.trim() === ""
+            ? 0
+            : parseInt(b.employee_age.trim(), 10);
         return sb - sa;
       } else if (self.props.sortBy === "Salary") {
         let sa =
-          a.employee_salary === "" ? 0 : parseFloat(a.employee_salary.trim(), 10);
+          a.employee_salary === ""
+            ? 0
+            : parseFloat(a.employee_salary.trim(), 10);
         let sb =
-          b.employee_salary === "" ? 0 : parseFloat(b.employee_salary.trim(), 10);
+          b.employee_salary === ""
+            ? 0
+            : parseFloat(b.employee_salary.trim(), 10);
         return sb - sa;
       }
     }
@@ -230,19 +246,22 @@ class EmployeeList extends React.Component {
     if (this.state.isLoading) {
       return <div className="loader" />;
     } else if (!this.state.employees.length) {
-      return <div className="error-loading-data">Error in Loading data...</div>
+      return <div className="error-loading-data">Error in Loading data...</div>;
     }
 
-    let showEmployeeModal = this.props.showCreateEmployee || this.state.showUpdateModal;
+    let showEmployeeModal =
+      this.props.showCreateEmployee || this.state.showUpdateModal;
 
-    let self = this;
+    let employeesList = this.state.employees
+      .filter(e => this.filterByName(e))
+      .filter(e => this.filterBySalary(e))
+      .filter(e => this.filterByAge(e))
+      .sort((a, b) => this.sortEmployees(a, b))
+      .map(employee => this.renderEmployee(employee));
 
-    let employeesList = self.state.employees
-      .filter(e => self.filterByName(e))
-      .filter(e => self.filterBySalary(e))
-      .filter(e => self.filterByAge(e))
-      .sort((a, b) => self.sortEmployees(a, b))
-      .map(employee => self.renderEmployee(employee));
+    if (!employeesList.length) {
+      return <div className="error-loading-data">No records to view...</div>;
+    }
 
     return (
       <div>
@@ -259,7 +278,7 @@ class EmployeeList extends React.Component {
           handleCreateEmployeeModal={this.handleCreateEmployeeModal.bind(this)}
           employee={this.employee}
         />
-      </div >
+      </div>
     );
   }
 }

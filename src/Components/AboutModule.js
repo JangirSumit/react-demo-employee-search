@@ -1,14 +1,15 @@
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Panel } from "react-bootstrap";
 
 class AboutModule extends React.Component {
   render() {
     return (
       <div>
-        <Jumbotron>
+        <Jumbotron className="header">
           <h3><strong>About</strong></h3>
 
         </Jumbotron >
+        <Panel bsStyle="primary"><Panel.Body>
         <p>
           This is a demo application which is completely made in react.js which includes following features.
 </p>
@@ -20,6 +21,7 @@ class AboutModule extends React.Component {
         <p>6. Delete</p>
         <p>7. Confirmation dialogs (Bootstrap)</p>
         <p>8. Modal dialogs (Bootstrap)</p>
+        </Panel.Body></Panel>
       </div>
     );
   }
